@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #fff5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #ff6b6b;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+/* Form Styles */
+#task-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    padding: 10px;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    width: 70%;
+    font-size: 1em;
+    outline: none;
+}
+
+#task-input:focus {
+    border-color: #4ecdc4;
+}
+
+button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff8e8e;
+}
+
+/* Task List Styles */
+#task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#task-list li {
+    background-color: #fff;
+    border: 2px solid #ff6b6b;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+#task-list li.completed {
+    background-color: #e8f4f8;
+    border-color: #4ecdc4;
+}
+
+#task-list li:hover {
+    background-color: #ffe3e3;
+}
+
+#task-list li.completed:hover {
+    background-color: #d4f1f9;
+}
+
+#task-list li span {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 10px;
+}
+
+#task-list li button {
+    background-color: #4ecdc4;
+    margin-left: 10px;
+}
+
+#task-list li button:hover {
+    background-color: #7fd8d1;
+}
+
+/* Checkbox Styles */
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ff6b6b;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox:checked {
+    background-color: #4ecdc4;
+    border-color: #4ecdc4;
+}
+
+.checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
