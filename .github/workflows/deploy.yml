@@ -16,10 +16,12 @@ jobs:
       - name: Install dependencies
         run: pip install flask
       - name: Run app
-        run: python app.py &
+        run: start /B python app.py
       - name: Install ngrok
         run: |
           choco install ngrok -y
           ngrok authtoken ${{ secrets.NGROK_AUTH_TOKEN }}
+      - name: Kill existing ngrok processes
+        run: taskkill /f /im ngrok.exe || true
       - name: Expose app with ngrok
         run: ngrok http 5000
