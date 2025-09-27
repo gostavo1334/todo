@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Heart Button</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg1: #0b1021;
+      --bg2: #131a31;
+      --card: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #ef4444; /* red */
+      --accent-2: #f87171;
+      --border: #1f2937;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      width: min(92vw, 540px);
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: 1.4rem;
+      color: var(--text);
+    }
+
+    p.sub {
+      margin: 0 0 1.5rem;
+      color: var(--muted);
+    }
+
+    .heart-btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: radial-gradient(120% 120% at 30% 30%, #ffb3b3, #ef4444);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 44px;
+      box-shadow: 0 10px 24px rgba(239,68,68,0.45), inset 0 0 12px rgba(255,255,255,0.35);
+      transition: transform .12s ease-out, box-shadow .12s ease-out, filter .2s ease;
+    }
+    .heart-btn:hover { transform: translateY(-2px) scale(1.03); }
+    .heart-btn:active { transform: translateY(0) scale(0.98); }
+    .heart-btn:focus-visible {
+      outline: 2px solid #fde68a;
+      outline-offset: 3px;
+    }
+    .heart {
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+    }
+
+    #message {
+      margin: 1.25rem 0 0.25rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity .22s ease, transform .22s ease, visibility .22s step-end;
+      visibility: hidden;
+    }
+    #message.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      transition: opacity .22s ease, transform .22s ease, visibility 0s;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Click the heart</h1>
+    
+
+    <button id="heartBtn" class="heart-btn" aria-label="Show love" aria-pressed="false">
+      <span class="heart" aria-hidden="true">❤</span>
+    </button>
+
+    <p id="message" aria-hidden="true"></p>
+    <p class="hint">Click again to hide</p>
+  </main>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('heartBtn');
+      const msg = document.getElementById('message');
+
+      function toggleMessage() {
+        const showing = msg.classList.contains('show');
+        if (showing) {
+          msg.classList.remove('show');
+          msg.setAttribute('aria-hidden', 'true');
+          btn.setAttribute('aria-pressed', 'false');
+          // optional: clear text
+          // msg.textContent = '';
+        } else {
+          msg.textContent = 'I love u poun my beautiful';
+          msg.classList.add('show');
+          msg.setAttribute('aria-hidden', 'false');
+          btn.setAttribute('aria-pressed', 'true');
+        }
+      }
+
+      btn.addEventListener('click', toggleMessage);
+      // Keyboard accessibility: Space/Enter should also toggle (button handles this by default)
+    })();
+  </script>
+</body>
+</html>
